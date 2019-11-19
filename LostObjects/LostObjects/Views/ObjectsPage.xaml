@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:LostObjects.Helpers"
+             x:Class="LostObjects.Views.ObjectsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate Objects}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddObjectCommand}"/>
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout
+			BindingContext="{Binding Objects}"
+			Padding="2">
+			<SearchBar
+				BackgroundColor="Transparent"
+				HeightRequest="30"
+				Placeholder="{i18n:Translate Search}"
+				SearchCommand="{Binding SearchCommand}"
+				Text="{Binding Filter}">
+			</SearchBar>
+			<ListView
+				BackgroundColor="Transparent"
+				HasUnevenRows="True"
+				IsRefreshing="{Binding IsRefreshing}"
+				IsPullToRefreshEnabled="True"
+				ItemsSource="{Binding Objects}"
+				RefreshCommand="{Binding RefreshCommand}"
+				SeparatorVisibility="None">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.ContextActions>
+								<MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditObjecttCommand}"/>
+								<MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeleteObjecttCommand}" IsDestructive="True"/>
+							</ViewCell.ContextActions>
+							<Frame
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="3"
+								Padding="2">
+								<Grid
+									BackgroundColor="Transparent"
+									HeightRequest="220"
+									Margin="1,3">
+									<Grid.GestureRecognizers>
+										<TapGestureRecognizer Command="{Binding DetailObjecttCommand}"/>
+									</Grid.GestureRecognizers>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="2*"/>
+										<ColumnDefinition Width="2*"/>
+										<ColumnDefinition Width="0.3*"/>
+									</Grid.ColumnDefinitions>
+									<Image
+											Grid.Column="0"
+											HorizontalOptions="Center"
+											VerticalOptions="Center"
+											Source="{Binding ImageFullPath}"
+											WidthRequest="130">
+									</Image>
+									<Label	
+											BackgroundColor="White"
+											TextColor="Black" 	
+											Grid.Column="0"
+											FontAttributes="Italic"														
+											HorizontalOptions="Center"
+											VerticalOptions="End"
+											VerticalTextAlignment="End">
+										<Label.Triggers>
+											<DataTrigger 
+													TargetType="Label" 											
+													Binding="{Binding IsDelivered}"	Value="true">
+												<Setter Property="Text" Value="{i18n:Translate Missingitem}" />
+											</DataTrigger>
+											<DataTrigger 
+													TargetType="Label" 
+													Binding="{Binding IsDelivered}" Value="false">
+												<Setter Property="Text" Value="" />
+											</DataTrigger>
+										</Label.Triggers>
+									</Label>
+									<StackLayout
+										Grid.Column="1"
+										HorizontalOptions="Start"
+										VerticalOptions="Start">
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto"/>
+												<RowDefinition Height="Auto"/>
+												<RowDefinition Height="Auto"/>
+												<RowDefinition Height="Auto"/>
+												<RowDefinition Height="Auto"/>
+												<RowDefinition Height="Auto"/>
+											</Grid.RowDefinitions>											
+											<Label
+												FontSize="Large" 
+												FontAttributes="Italic"
+												Grid.Row="0"
+												TextColor="Black"
+												Text="{Binding Name}"
+												VerticalOptions="Start"
+												HorizontalOptions="Center">											
+											</Label>
+											<Label
+												FontAttributes="Bold"
+												FontSize="Medium"
+												Grid.Row="1"
+												Text="{i18n:Translate Type}"
+												VerticalOptions="Center"
+												HorizontalOptions="Start">
+											</Label>
+											<Label 
+												FontAttributes="Italic"
+												Grid.Row="2"
+												Text="{ Binding Type}"  
+												VerticalOptions="Start"
+												HorizontalOptions="Start">
+											</Label>
+											<Label
+												FontAttributes="Bold"
+												FontSize="Medium"
+												Grid.Row="3"
+												Text="{i18n:Translate Description  }"
+												VerticalOptions="Center">
+											</Label>
+											<Label 
+												FontAttributes="Italic" 
+												Grid.Row="4"
+												HorizontalOptions="Start"  
+												Text="{ Binding Description}"
+												VerticalOptions="Start">
+											</Label>											
+										</Grid>
+									</StackLayout>
+									<Label 
+										FontAttributes="Italic"
+										Grid.Column="1"
+										HorizontalOptions="End"
+										Text="{ Binding Location}"
+										VerticalTextAlignment="End"
+										VerticalOptions="End">
+									</Label>
+									<Image                                      
+										Grid.Column="2"
+										Source="ic_chevron_right"
+										VerticalOptions="Center">
+									</Image>
+									<Image                                      
+										Grid.Column="2"
+										HorizontalOptions="Start"
+										Source="ic_location_on"
+										TranslationY="2"
+										TranslationX="-6"
+										VerticalOptions="End">
+									</Image>
+								</Grid>
+							</Frame>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

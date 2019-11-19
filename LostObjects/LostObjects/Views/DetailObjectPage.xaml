@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:i18n="clr-namespace:LostObjects.Helpers"
+             x:Class="LostObjects.Views.DetailObjectPage"
+			 BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate DetailObject}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="ic_action_edit" Command="{Binding EditObjectCommand}"/>
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<ScrollView
+			BindingContext="{Binding DetailObject}">
+			<StackLayout
+			Padding="0,0,0,5">
+				<Image
+					Source="{Binding ImageSource}">
+				</Image>
+				<Frame 
+				   CornerRadius="15" 
+                   BackgroundColor="White"
+                   Padding="10"
+                   TranslationY="-12"
+                   Margin="10,5,10,5">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="0"
+							Text="{i18n:Translate Name}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="{Binding Objectt.Name}">
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="1"
+							Text="{i18n:Translate Type}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="{Binding Objectt.Type}">
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="2"
+							Text="{i18n:Translate PublishOn}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="{Binding Objectt.PublishOn}">
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="3"
+							Text="{i18n:Translate PhoneContact}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="3"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="{Binding Objectt.PhoneContact}">
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="4"
+							Text="{i18n:Translate Location}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="4"	
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="{Binding Objectt.Location}">
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="5"
+							Text="{i18n:Translate IsDelivered}"
+							VerticalOptions="Center">
+						</Label>					
+						<Label
+						   Grid.Column="1"
+                           Grid.Row="5"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+							<Label.Triggers>
+								<DataTrigger 
+									TargetType="Label" 
+									Binding="{Binding Objectt.IsDelivered}" 
+									Value="true">
+										<Setter Property="Text" Value="{i18n:Translate Yes}" />
+										<Setter Property="TextColor" Value="Green" />
+								</DataTrigger>
+								<DataTrigger 
+									TargetType="Label" 
+									Binding="{Binding Objectt.IsDelivered}" 
+									Value="false">
+										<Setter Property="Text" Value="{i18n:Translate No}" />
+										<Setter Property="TextColor" Value="Red" />
+								</DataTrigger>
+							</Label.Triggers>
+						</Label>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="6"
+							Text="{i18n:Translate Description}"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Column="1"
+							Grid.Row="6"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"	
+							Text="{Binding Objectt.Description}">
+						</Label>
+					</Grid>
+				</Frame>
+				<ActivityIndicator
+					IsRunning="{Binding IsRunning}"
+					VerticalOptions="CenterAndExpand">
+				</ActivityIndicator>
+				<StackLayout
+                    Padding="5"
+                    Orientation="Horizontal">
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

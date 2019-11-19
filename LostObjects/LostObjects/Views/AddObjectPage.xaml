@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:i18n="clr-namespace:LostObjects.Helpers"
+             x:Class="LostObjects.Views.AddObjectPage"
+			 BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddObject}">
+	<ContentPage.Content>
+		<ScrollView
+			BindingContext="{Binding AddObject}">
+			<StackLayout
+			Padding="0,0,0,5">
+				<Image
+					Source="{Binding ImageSource}">
+					<Image.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+					</Image.GestureRecognizers>
+				</Image>
+				<Label
+					FontSize="Small"
+					HorizontalOptions="Center"
+					Text="{i18n:Translate ChangeImage}">
+				</Label>
+				<Frame 
+				   CornerRadius="15" 
+                   BackgroundColor="White"
+                   Padding="5"
+                   Margin="5,5,5,5">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="1.7*"/>
+						</Grid.RowDefinitions>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="0"
+							Text="{i18n:Translate Name}"
+							VerticalOptions="Center">
+						</Label>
+						<Entry
+							Grid.Column="1"
+							Grid.Row="0"
+							Text="{Binding Objectt.Name}"
+							Placeholder="{i18n:Translate NamePlaceholder}">
+						</Entry>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="1"
+							Text="{i18n:Translate Type}"
+							VerticalOptions="Center">
+						</Label>
+						<Entry
+							Grid.Column="1"
+							Grid.Row="1"
+							Text="{Binding Objectt.Type}"
+							Placeholder="{i18n:Translate TypePlaceholder}">
+						</Entry>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="2"
+							Text="{i18n:Translate PhoneContact}"
+							VerticalOptions="Center">
+						</Label>
+						<Entry
+							Grid.Column="1"
+							Grid.Row="2"
+							Keyboard="Numeric"
+							Text="{Binding Objectt.PhoneContact}"
+							Placeholder="{i18n:Translate PhoneContactPlaceholder}">
+						</Entry>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="3"
+							Text="{i18n:Translate Location}"
+							VerticalOptions="Center">
+						</Label>
+						<Entry
+							Grid.Column="1"
+							Grid.Row="3"						
+							Text="{Binding Objectt.Location}"
+							Placeholder="{i18n:Translate LocationPlaceholder}">
+						</Entry>
+						<Label 
+							Grid.Column="0"
+							Grid.Row="4"
+							Text="{i18n:Translate Description}"
+							VerticalOptions="Center">
+						</Label>
+						<Editor
+							Grid.Column="1"
+							Grid.Row="4"
+							Text="{Binding Objectt.Description}">
+						</Editor>
+					</Grid>
+				</Frame>
+				<ActivityIndicator
+					IsRunning="{Binding IsRunning}"
+					VerticalOptions="CenterAndExpand">
+				</ActivityIndicator>
+				<StackLayout
+                    Padding="5"
+                    Orientation="Horizontal">
+					<Button
+						HorizontalOptions="FillAndExpand"
+						BackgroundColor="Navy"
+						BorderRadius="23"
+						Command="{Binding SaveCommand}"
+						HeightRequest="46"
+						IsEnabled="{Binding IsEnabled}"
+						Text="{i18n:Translate Save}"
+						TextColor="White">
+					</Button>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

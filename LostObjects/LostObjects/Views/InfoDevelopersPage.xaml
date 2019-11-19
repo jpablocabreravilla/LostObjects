@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostObjects.Views.InfoDevelopersPage"
+			 xmlns:i18n="clr-namespace:LostObjects.Helpers"
+			 BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate InfoDevelopers}">
+	<ContentPage.Content>
+		<ScrollView
+			BindingContext="{Binding InfoDevelopers}">
+			<StackLayout
+			Padding="0,0,0,5">
+				
+				<Frame 
+				   CornerRadius="15" 
+                   BackgroundColor="White"
+                   Padding="10"
+                   Margin="10,5,10,5">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>							
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						
+						<Label>							
+						</Label>
+						<Label
+							Grid.Row="0"
+							Text="DEVELOPER"
+							TextColor="Black"
+							FontAttributes="Bold"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label>
+						</Label>
+						<Label
+							Grid.Row="2"
+							Text="Juan Pablo Cabrera Villa"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label 
+							Grid.Row="3"
+							Text="Estudiante de Ing. Sistemas"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Row="4"
+							Text="juancabrera187562@correo.itm.edu.co"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label>
+						</Label>
+
+						<Label
+							Grid.Row="7"
+							Text="DEVELOPER"
+							FontAttributes="Bold"
+							TextColor="Black"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label>
+						</Label>
+						<Label
+							Grid.Row="9"
+							Text="Einer Alean Sepulveda"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label 
+							Grid.Row="10"
+							Text="Estudiante de Ing. Sistemas"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label
+							Grid.Row="11"
+							Text="eineralean219690@correo.itm.edu.co"
+							HorizontalOptions="Center"
+							VerticalOptions="Center">
+						</Label>
+						<Label>
+						</Label>
+					</Grid>
+				</Frame>
+				<ActivityIndicator>
+				</ActivityIndicator>
+				<StackLayout
+                    Padding="5"
+                    Orientation="Horizontal">
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>
